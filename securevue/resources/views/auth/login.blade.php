@@ -2,14 +2,13 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Login</title>
+    <title>SecureVue - Login</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -19,7 +18,6 @@
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
 </head>
 
 <body class="bg-gradient-primary">
@@ -41,41 +39,43 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                     </div>
-                                    <form class="user">
+
+                                    <!-- Laravel Breeze Login Form -->
+                                    <form method="POST" action="{{ route('login') }}">
+                                        @csrf
+
+                                        <!-- Email Address -->
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Enter Email Address...">
+                                            <label for="email" class="form-label text-gray-900">{{ __('Email') }}</label>
+                                            <input id="email" class="form-control form-control-user" type="email" name="email" :value="old('email')" required autofocus />
                                         </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password">
+
+                                        <!-- Password -->
+                                        <div class="form-group mt-4">
+                                            <label for="password" class="form-label text-gray-900">{{ __('Password') }}</label>
+                                            <input id="password" class="form-control form-control-user" type="password" name="password" required autocomplete="current-password" />
                                         </div>
-                                        <div class="form-group">
+
+                                        <!-- Remember Me -->
+                                        <div class="form-group mt-4">
                                             <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">Remember
-                                                    Me</label>
+                                                <input id="remember_me" type="checkbox" class="custom-control-input" name="remember" />
+                                                <label class="custom-control-label" for="remember_me">{{ __('Remember me') }}</label>
                                             </div>
                                         </div>
-                                        <a href="index.blade.php" class="btn btn-primary btn-user btn-block">
-                                            Login
-                                        </a>
+
+                                        <button type="submit" class="btn btn-primary btn-user btn-block">
+                                            {{ __('Login') }}
+                                        </button>
+
                                         <hr>
-                                        <a href="index.blade.php" class="btn btn-google btn-user btn-block">
-                                            <i class="fab fa-google fa-fw"></i> Login with Google
+                                        <a href="{{ route('password.request') }}" class="btn btn-link btn-user btn-block">
+                                            {{ __('Forgot your password?') }}
                                         </a>
-                                        <a href="index.blade.php" class="btn btn-facebook btn-user btn-block">
-                                            <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
+                                        <a href="{{ route('register') }}" class="btn btn-link btn-user btn-block">
+                                            {{ __('Create an Account!') }}
                                         </a>
                                     </form>
-                                    <hr>
-                                    <div class="text-center">
-                                        <a class="small" href="{{ url('/forgot-password') }}">Forgot Password?</a>
-                                    </div>
-                                    <div class="text-center">
-                                        <a class="small" href="{{ url('/register') }}">Create an Account!</a>
-                                    </div>
                                 </div>
                             </div>
                         </div>

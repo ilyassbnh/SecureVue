@@ -3,8 +3,9 @@ use Illuminate\Support\Facades\Route;
 
 // Home page
 Route::get('/', function () {
-    return view('index');
+    return view('login');
 });
+
 
 // 404 Page
 Route::fallback(function () {
@@ -70,6 +71,9 @@ Route::get('/utilities/color', function () {
 Route::get('/utilities/other', function () {
     return view('utilities-other');
 });
+
+//
+
 
 // Dashboard (authenticated)
 Route::get('/dashboard', function () {
