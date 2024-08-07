@@ -1,6 +1,8 @@
 <?php
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RoleController;
 
+Route::resource('admin/roles', RoleController::class);
 // Home page
 Route::get('/', function () {
     return view('login');

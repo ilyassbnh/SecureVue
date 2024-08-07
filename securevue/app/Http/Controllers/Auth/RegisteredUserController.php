@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Role;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -33,17 +34,11 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
+        $this->validateRegistration($request);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        $user = $this->createUser($request);
+
+        $this->attachAdminRole($user);
 
         event(new Registered($user));
 
@@ -51,4 +46,49 @@ class RegisteredUserController extends Controller
 
         return redirect(RouteServiceProvider::HOME);
     }
+
+    /**
+     * Validate the registration request.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return void
+     */
+    protected function validateRegistration(Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]);
+    }
+
+    /**
+     * Create a new user instance.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \App\Models\User
+     */
+    protected function createUser(Request $request)
+    {
+        return User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+    }
+
+    /**
+     * Attach the admin role to the user.
+     *
+     * @param \App\Models\User $user
+     * @return void
+     */
+    protected function attachAdminRole(User $user)
+    {
+        $adminRole = Role::where('name', 'User')->first();
+        if ($adminRole) {
+            $user->roles()->attach($adminRole);
+        }
+    }
 }
+
