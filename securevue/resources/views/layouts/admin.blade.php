@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
-    @include('partials.admin.navbar')
+    
     <div class="container mt-4">
         @yield('content')
     </div>

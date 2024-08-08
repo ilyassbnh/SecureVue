@@ -116,7 +116,7 @@
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
                         <a class="collapse-item" href="404.b">404 Page</a>
-                        <a class="collapse-item" href="blank.b">Blank Page</a>
+                        <a class="collapse-item" href="blank.b">Roles</a>
                     </div>
                 </div>
             </li>

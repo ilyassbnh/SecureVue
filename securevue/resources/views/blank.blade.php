@@ -116,7 +116,7 @@
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
                         <a class="collapse-item" href="404.blade.php">404 Page</a>
-                        <a class="collapse-item active" href="{{ url('/blank') }}">Blank Page</a>
+                        <a class="collapse-item active" href="{{ url('/blank') }}">Roles</a>
                     </div>
                 </div>
             </li>
@@ -236,7 +236,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
+                    <h1 class="h3 mb-4 text-gray-800">Roles</h1>
 
                 </div>
                 <!-- /.container-fluid -->

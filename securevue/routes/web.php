@@ -1,20 +1,23 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\PermissionController;
 
 Route::resource('admin/roles', RoleController::class);
+Route::get('roles', [RoleController::class, 'index'])->name('roles.index');
+Route::resource('permissions', PermissionController::class);
+
 // Home page
 Route::get('/', function () {
     return view('login');
 });
-
 
 // 404 Page
 Route::fallback(function () {
     return view('404');
 });
 
-// Blank page
+// Roles
 Route::get('/blank', function () {
     return view('blank');
 });

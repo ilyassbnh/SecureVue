@@ -116,7 +116,7 @@
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
                         <a class="collapse-item" href="404.blade.php">404 Page</a>
-                        <a class="collapse-item" href="{{ url('/blank') }}">Blank Page</a>
+                        <a class="collapse-item" href="{{ url('/blank') }}">Roles</a>
                     </div>
                 </div>
             </li>
