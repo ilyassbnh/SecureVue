@@ -38,11 +38,7 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/') }}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
-            </li>
+            
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -107,7 +103,7 @@
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
                         <a class="collapse-item" href="{{ url('/404') }}">404 Page</a>
-                        <a class="collapse-item active" href="{{ url('/blank') }}">Roles</a>
+                        <a class="collapse-item active" href="{{ route('roles.index') }}">Roles</a>
                     </div>
                 </div>
             </li>

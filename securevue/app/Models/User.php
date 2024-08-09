@@ -46,4 +46,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Role::class);
     }
+    // Example method in User model
+    public function hasRole($role)
+    {
+        return $this->roles->contains('name', $role);
+    }
 }
